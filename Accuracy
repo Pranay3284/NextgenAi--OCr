@@ -1,0 +1,6 @@
+_, test_accuracy = model.evaluate(X_test, y_test, verbose=0)
+
+
+print(f'Test accuracy: {test_accuracy * 100:.2f}%')
+output:
+Test accuracy: 99.21%

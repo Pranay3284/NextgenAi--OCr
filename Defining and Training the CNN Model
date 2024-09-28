@@ -1,0 +1,44 @@
+Defining and Training the CNN Model
+model = Sequential([
+    Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)),
+    MaxPooling2D(pool_size=(2, 2)),
+    Conv2D(64, kernel_size=(3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')  # 10 output units for digits 0-9
+])
+
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+
+model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=128)
+
+
+model.save('mnist_digit_recognition_model.h5')
+
+print("Model trained and saved successfully.")
+output:
+Epoch 1/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 10s 19ms/step - accuracy: 0.8538 - loss: 0.4963 - val_accuracy: 0.9815 - val_loss: 0.0601
+Epoch 2/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 9s 19ms/step - accuracy: 0.9823 - loss: 0.0598 - val_accuracy: 0.9855 - val_loss: 0.0421
+Epoch 3/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 10s 21ms/step - accuracy: 0.9876 - loss: 0.0414 - val_accuracy: 0.9884 - val_loss: 0.0378
+Epoch 4/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 9s 19ms/step - accuracy: 0.9910 - loss: 0.0307 - val_accuracy: 0.9871 - val_loss: 0.0385
+Epoch 5/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 9s 19ms/step - accuracy: 0.9919 - loss: 0.0249 - val_accuracy: 0.9896 - val_loss: 0.0302
+Epoch 6/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 9s 19ms/step - accuracy: 0.9936 - loss: 0.0200 - val_accuracy: 0.9900 - val_loss: 0.0288
+Epoch 7/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 9s 19ms/step - accuracy: 0.9954 - loss: 0.0154 - val_accuracy: 0.9899 - val_loss: 0.0311
+Epoch 8/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 8s 17ms/step - accuracy: 0.9961 - loss: 0.0125 - val_accuracy: 0.9896 - val_loss: 0.0309
+Epoch 9/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 8s 17ms/step - accuracy: 0.9967 - loss: 0.0109 - val_accuracy: 0.9910 - val_loss: 0.0281
+Epoch 10/10
+469/469 ━━━━━━━━━━━━━━━━━━━━ 8s 17ms/step - accuracy: 0.9976 - loss: 0.0073 - val_accuracy: 0.9921 - val_loss: 0.0278
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+Model trained and saved successfully.

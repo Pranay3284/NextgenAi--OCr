@@ -1,0 +1,18 @@
+from tensorflow.keras.models import load_model
+import numpy as np
+
+
+model = load_model(r"C:\Users\Hi\mnist_digit_recognition_model.h5")
+
+
+sample = X_test[0].reshape(1, 28, 28, 1)  
+prediction = model.predict(sample)
+
+
+predicted_digit = np.argmax(prediction)
+actual_digit = np.argmax(y_test[0])
+
+print(f'Predicted digit: {predicted_digit}, Actual digit: {actual_digit}')
+output:
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 68ms/step
+Predicted digit: 7, Actual digit: 7
